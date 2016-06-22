@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :movies
+  resources :movies do
+    resources :reviews, only: [:new, :create]
+  end
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
 end
