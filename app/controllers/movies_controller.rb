@@ -8,7 +8,11 @@ class MoviesController < ApplicationController
   end
 
   def new
+<<<<<<< 5a55d5e78ec928813064e4f8fd577de4e8c9b13f
     @movie = Movie.new
+=======
+    @movie = Movie.new(movie_params)
+>>>>>>> Define 'movies' routes
   end
 
   def edit
