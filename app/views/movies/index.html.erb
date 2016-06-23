@@ -3,8 +3,13 @@
 <hr>
 
 <% @movies.each do |movie| %>
-
-  <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+  <% if movie.uploaded_image.present? %>
+    <%= image_tag movie.uploaded_image_url.to_s %>
+  <% elsif movie.poster_image_url %>
+    <%= image_tag movie.poster_image_url.to_s %>
+  <% else %>
+    <% # do nothing %>
+  <% end %>
 
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
   <h3><%= formatted_date(movie.release_date) %></h3>
