@@ -10,5 +10,14 @@
   <h3><%= movie.release_date %></h3>
   <h4>Directed by <%= movie.director %>  |  <%= movie.runtime_in_minutes %> minutes</h4>
   <p><%= movie.description %></p>
+
+  <div>
+    <% if movie.reviews.count > 0 %>
+      <p>Average reviews: <%= movie.review_average %>/10 from <%= pluralize(movie.reviews.count, "review") %></p>
+    <% else %>
+      <p>This movie has not been reviewed yet.</p>
+    <% end %>
+  </div>
+
   <hr>
 <% end %>
