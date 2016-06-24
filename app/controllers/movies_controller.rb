@@ -1,6 +1,10 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    if params[:title]
+      @movies = Movie.where("lower(title) LIKE ?", "%#{params[:title].downcase}%")
+    else
+      @movies = Movie.all
+    end
   end
 
   def show
