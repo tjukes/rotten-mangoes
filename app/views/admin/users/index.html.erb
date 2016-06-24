@@ -5,10 +5,6 @@
 
 <% @users.each do |user| %>
   <div>
-    <%= "#{user.firstname} #{user.lastname}" %>
-    <%= user.email %>
-    <% if user.is_admin? %>
-      Admin
-    <% end %>
+    <%= link_to "#{user.firstname} #{user.lastname}", admin_user_path(user) %>
   </div>
 <% end %>
