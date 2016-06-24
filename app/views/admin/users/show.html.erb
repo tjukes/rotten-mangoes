@@ -1,0 +1,17 @@
+<h1>User Profile</h1>
+<%= link_to "Back to All Users", admin_users_path %>
+<hr>
+
+<h3><%= @user.firstname %> <%= @user.lastname %></h3>
+
+<div>
+  <p>
+    Email: <%= @user.email %>
+  </p>
+</div>
+
+<% if @user.is_admin? %>
+  <div>
+    This user is also an admin.
+  </div>
+<% end %>
