@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_filter :restrict_access_admin
 
   def index
     @users = User.all
@@ -7,7 +8,7 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-  
+
   def new
     @user = User.new
   end
