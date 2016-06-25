@@ -1,12 +1,13 @@
 class ReviewsController < ApplicationController
   before_filter :restrict_access
-  before_filter :load_movie
 
   def new
+    load_movie
     @review = @movie.reviews.build
   end
 
   def create
+    load_movie
     @review = @movie.reviews.build(review_params)
     @review.user_id = current_user.id
 
