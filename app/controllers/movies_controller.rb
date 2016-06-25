@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   def index
-    if params[:title]
-      @movies = Movie.where("lower(title) LIKE ?", "%#{params[:title].downcase}%")
+    if params[:title].present? || params[:director].present? || params[:duration].present?
+      @movies = Movie.search(search_params)
     else
       @movies = Movie.all
     end
@@ -50,5 +50,9 @@ class MoviesController < ApplicationController
     params.require(:movie).permit(
       :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description, :uploaded_image
     )
+  end
+
+  def search_params
+    params.permit(:title, :director, :duration)
   end
 end
